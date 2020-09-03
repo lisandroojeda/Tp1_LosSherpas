@@ -3,6 +3,9 @@ package tp1_LosSherpas.test;
 import tp1_LosSherpas.main.LlenadorLineal;
 import tp1_LosSherpas.main.LlenadorLogaritmico;
 import tp1_LosSherpas.main.LlenadorNLogaritmico;
+
+import javax.swing.JFrame;
+
 import tp1_LosSherpas.Ventanas.Interfaz;
 import tp1_LosSherpas.main.LlenadorCuadratico;
 import tp1_LosSherpas.main.LlenadorCubico;
@@ -13,14 +16,15 @@ public class Test {
 		String cadena1 = "Hola";
 		String cadena2 = "Sherpas";
 		System.out.println(cadena1+" "+cadena2);
-		
+		JFrame vInterfaz = new Interfaz();
+		vInterfaz.setVisible(true);
 		//creacion de todos los objetos
-		int tamanioMuestra= 100000;
-		LlenadorLineal lineal = new LlenadorLineal(tamanioMuestra);
-		LlenadorLogaritmico logaritmico = new LlenadorLogaritmico(tamanioMuestra);
-		LlenadorCuadratico cuadratico = new LlenadorCuadratico(tamanioMuestra);
-		LlenadorCubico cubico = new LlenadorCubico(tamanioMuestra);
-		LlenadorNLogaritmico nlogaritmico = new LlenadorNLogaritmico(tamanioMuestra);
+		int tamanioMuestra= 10;
+		LlenadorLineal lineal = new LlenadorLineal(tamanioMuestra,vInterfaz);
+		LlenadorLogaritmico logaritmico = new LlenadorLogaritmico(tamanioMuestra,vInterfaz);
+		LlenadorCuadratico cuadratico = new LlenadorCuadratico(tamanioMuestra,vInterfaz);
+		LlenadorCubico cubico = new LlenadorCubico(tamanioMuestra,vInterfaz);
+		LlenadorNLogaritmico nlogaritmico = new LlenadorNLogaritmico(tamanioMuestra,vInterfaz);
 		//LlenadorExponencial exponencial = new LlenadorExponencial(tamanioMuestra);
 //		tienen que ir todos los arranques juntos sino no se cumple la condicion de arranque
 		logaritmico.start();//1

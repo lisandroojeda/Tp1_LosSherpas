@@ -1,9 +1,13 @@
 package tp1_LosSherpas.main;
 
+import javax.swing.JFrame;
+
+
+
 public class LlenadorLogaritmico extends LlenadorGeneral  {
 	
-	public LlenadorLogaritmico(int vTMuestra) {
-		super (vTMuestra);
+	public LlenadorLogaritmico(int vTMuestra,JFrame vInterfaz) {
+		super (vTMuestra,vInterfaz);
 	}
 	
 	@Override

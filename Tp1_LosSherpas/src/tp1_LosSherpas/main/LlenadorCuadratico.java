@@ -1,9 +1,11 @@
 package tp1_LosSherpas.main;
 
+import javax.swing.JFrame;
+
 public class LlenadorCuadratico extends LlenadorGeneral {
 
-	public LlenadorCuadratico(int vTMuestra) {
-		super (vTMuestra);
+	public LlenadorCuadratico(int vTMuestra,JFrame vInterfaz) {
+		super (vTMuestra,vInterfaz);
 	}
 
 	@Override

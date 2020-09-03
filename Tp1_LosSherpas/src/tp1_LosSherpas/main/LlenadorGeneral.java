@@ -1,5 +1,7 @@
 package tp1_LosSherpas.main;
 
+import javax.swing.JFrame;
+
 
 
 public abstract class LlenadorGeneral extends Thread {
@@ -7,10 +9,12 @@ public abstract class LlenadorGeneral extends Thread {
 	long tInicio;
 	long tFinal;
 	long tiempo;
-
+    JFrame interfaz;
 	
-	public LlenadorGeneral(int vTMuestra) {
+	public LlenadorGeneral(int vTMuestra,JFrame vIntefaz) {
 		this.tamanioMuestra = vTMuestra;
+		this.interfaz = vIntefaz; // le paso la interfaz completa ... 
+		
 	}
     
 	@Override

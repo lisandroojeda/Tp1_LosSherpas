@@ -1,9 +1,11 @@
 package tp1_LosSherpas.main;
 
+import javax.swing.JFrame;
+
 public class LlenadorExponencial extends LlenadorGeneral {
 
-	public LlenadorExponencial(int vTMuestra) {
-		super (vTMuestra);
+	public LlenadorExponencial(int vTMuestra,JFrame vInterfaz) {
+		super (vTMuestra,vInterfaz);
 	}
 
 	@Override

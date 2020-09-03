@@ -1,11 +1,19 @@
 package tp1_LosSherpas.main;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import tp1_LosSherpas.Ventanas.Interfaz;
 
 public class LlenadorLineal extends LlenadorGeneral  {
 		
-		public LlenadorLineal(int vTMuestra) {
-			super (vTMuestra);
+		public LlenadorLineal(int vTMuestra, JFrame vInterfaz) {
+			super (vTMuestra,vInterfaz);
 		}
 		 
 		@Override
@@ -16,9 +24,7 @@ public class LlenadorLineal extends LlenadorGeneral  {
 				count++;
 				super.Tiempo();
 				//System.out.println("Proceso1");
-			//	try { //detiene el hilo por 50 milisegundos
-			//		Thread.sleep(50);
-			//	}catch(Exception e) {}
+			//	w
 			}
 			this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			this.tiempo = tFinal - tInicio;
