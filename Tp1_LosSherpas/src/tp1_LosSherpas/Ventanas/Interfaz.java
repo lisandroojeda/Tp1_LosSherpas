@@ -38,7 +38,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 import java.awt.Window.Type;
 
-public class Interfaz extends JFrame {
+public class  Interfaz extends JFrame {
 
 	private JPanel contentPane;
 
@@ -62,8 +62,10 @@ public class Interfaz extends JFrame {
 	 * Create the frame.
 	 */
 
+		
+
 	
-	public Interfaz() {
+	public  Interfaz() {
 		setResizable(false);
 		setForeground(UIManager.getColor("Button.focus"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,7 +73,6 @@ public class Interfaz extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
-		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addKeyListener(new KeyAdapter() {
 			@Override
@@ -116,6 +117,33 @@ public class Interfaz extends JFrame {
 		contentPane.add(panelExp);
 		panelExp.setLayout(null);
 //Definicion de partes de log
+		JPanel JPanelBeerLog = new JPanel();
+		JPanelBeerLog.setForeground(Color.YELLOW);
+		JPanelBeerLog.setDebugGraphicsOptions(DebugGraphics.BUFFERED_OPTION);
+		JPanelBeerLog.setBounds(54, 106, 1, 1);
+		panelLineal.add(JPanelBeerLog);
+		JPanelBeerLog.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		JPanelBeerLog.setLayout(null);
+		
+		int count=1;
+		int fija= 33;
+        //creacion automatica
+		for (int i =0; i<9;i++) {
+			JLabel JLabelBEERX = new JLabel("Jlabel"+count);
+			JLabelBEERX.setBackground(Color.LIGHT_GRAY);
+			JLabelBEERX.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
+			JLabelBEERX.setFont(new Font("Stencil", Font.BOLD, 18));
+			JLabelBEERX.setForeground(Color.YELLOW);
+			JLabelBEERX.setVerticalTextPosition(SwingConstants.BOTTOM);
+			fija = fija + 16;
+			JLabelBEERX.setBounds(24, fija, 90, 16); //posicion del label
+			JLabelBEERX.setVisible(true);
+			panelLog.add(JLabelBEERX);
+			panelLog.repaint();
+			count++;
+		};
+		/**
+
 		JLabel JlabelPintaLog = new JLabel("");
 		JlabelPintaLog.setLabelFor(panelLog);
 		JlabelPintaLog.setBounds(0, 11, 175, 203);
@@ -214,6 +242,9 @@ public class Interfaz extends JFrame {
 		JLabelBEER9Log.setBounds(24, 33, 90, 16);
 		JLabelBEER9Log.setVisible(false);
 		panelLog.add(JLabelBEER9Log);
+		
+			 * 
+		 */	
 		
 		JLabel lbltiempoLog = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog.setBounds(191, 49, 100, 14);
@@ -434,15 +465,15 @@ public class Interfaz extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//log
-				JLabelBEER1Log.setVisible(true);
-				JLabelBEER2Log.setVisible(true);
-				JLabelBEER3Log.setVisible(true);
-				JLabelBEER4Log.setVisible(true);
-				JLabelBEER5Log.setVisible(true);
-				JLabelBEER6Log.setVisible(true);
-				JLabelBEER7Log.setVisible(true);
-				JLabelBEER8Log.setVisible(true);
-				JLabelBEER9Log.setVisible(true);
+			//	JLabelBEER1Log.setVisible(true);
+			//	JLabelBEER2Log.setVisible(true);
+			//	JLabelBEER3Log.setVisible(true);
+			//	JLabelBEER4Log.setVisible(true);
+			//	JLabelBEER5Log.setVisible(true);
+			//	JLabelBEER6Log.setVisible(true);
+			//	JLabelBEER7Log.setVisible(true);
+			//	JLabelBEER8Log.setVisible(true);
+			//	JLabelBEER9Log.setVisible(true);
 				//LogN
 				JLabelBEER1NLog.setVisible(true);
 				JLabelBEER2NLog.setVisible(true);
