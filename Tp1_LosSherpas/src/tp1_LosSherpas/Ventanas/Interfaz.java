@@ -22,7 +22,12 @@ import java.awt.event.MouseEvent;
 import java.awt.Label;
 import javax.swing.border.TitledBorder;
 
+import tp1_LosSherpas.main.LlenadorCuadratico;
+import tp1_LosSherpas.main.LlenadorCubico;
+import tp1_LosSherpas.main.LlenadorExponencial;
 import tp1_LosSherpas.main.LlenadorLineal;
+import tp1_LosSherpas.main.LlenadorLogaritmico;
+import tp1_LosSherpas.main.LlenadorNLogaritmico;
 
 import java.awt.Rectangle;
 import java.awt.ComponentOrientation;
@@ -37,10 +42,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 import java.awt.Window.Type;
-
+import java.awt.SystemColor;
+import java.util.*;
 public class  Interfaz extends JFrame {
 
 	private JPanel contentPane;
+	private JProgressBar progressBarCubica;
+	private JTextField txtFieldQlitros;
 
 	/**
 	 * Launch the application.
@@ -62,9 +70,6 @@ public class  Interfaz extends JFrame {
 	 * Create the frame.
 	 */
 
-		
-
-	
 	public  Interfaz() {
 		setResizable(false);
 		setForeground(UIManager.getColor("Button.focus"));
@@ -73,49 +78,159 @@ public class  Interfaz extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
-		JButton btnNewButton = new JButton("New button");
+		
+		JButton btnNewButton = new JButton("SERVIR");
 		btnNewButton.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 			}
 		});
-		btnNewButton.setBounds(50, 39, 89, 23);
+		btnNewButton.setBounds(10, 11, 89, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		contentPane.setLayout(null);
+		
+		txtFieldQlitros = new JTextField();
+		txtFieldQlitros.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		txtFieldQlitros.setToolTipText("Litros");
+		txtFieldQlitros.setBounds(190, 12, 86, 20);
+		contentPane.add(txtFieldQlitros);
+		txtFieldQlitros.setColumns(10);
 		contentPane.add(btnNewButton);
 
 		Panel panelLog = new Panel();
-		panelLog.setBounds(100, 100, 320, 220);
+		panelLog.setBounds(34, 40, 360, 323);
 		contentPane.add(panelLog);
 		panelLog.setLayout(null);
 		
 		Panel panelNLogN = new Panel();
-		panelNLogN.setBounds(470, 100, 320, 220);
+		panelNLogN.setBounds(470, 40, 360, 323);
 		contentPane.add(panelNLogN);
 		panelNLogN.setLayout(null);
 
 		Panel panelLineal = new Panel();
-		panelLineal.setBounds(850,100, 320, 220);
+		panelLineal.setBounds(890,40, 360, 323);
 		contentPane.add(panelLineal);
 		panelLineal.setLayout(null);
 		
 		Panel panelCuadratica = new Panel();
-		panelCuadratica.setBounds(100, 350, 320, 220);
+		panelCuadratica.setBounds(34, 392, 360, 323);
 		contentPane.add(panelCuadratica);
 		panelCuadratica.setLayout(null);
 		
+		JProgressBar progressBarCuadratica = new JProgressBar();
+		progressBarCuadratica.setStringPainted(true);
+		progressBarCuadratica.setOrientation(SwingConstants.VERTICAL);
+		progressBarCuadratica.setForeground(new Color(255, 204, 51));
+		progressBarCuadratica.setEnabled(false);
+		progressBarCuadratica.setBackground(SystemColor.menu);
+		progressBarCuadratica.setBounds(40, 78, 130, 166);
+		panelCuadratica.add(progressBarCuadratica);
+		
+		JLabel JlabelPintaCuadratico = new JLabel("");
+		JlabelPintaCuadratico.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
+		JlabelPintaCuadratico.setBackground(SystemColor.menu);
+		JlabelPintaCuadratico.setAutoscrolls(true);
+		JlabelPintaCuadratico.setBounds(10, 11, 291, 281);
+		panelCuadratica.add(JlabelPintaCuadratico);
+		
+		JLabel lblLlenadoCuadratico = new JLabel("LLENADO CUADRATICO");
+		lblLlenadoCuadratico.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblLlenadoCuadratico.setBounds(10, 298, 233, 25);
+		panelCuadratica.add(lblLlenadoCuadratico);
+		
+		JLabel lbltiempoLog_1_1_1_1_1 = new JLabel("Tiempo de Ejecucion");
+		lbltiempoLog_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1.setBounds(198, 237, 152, 15);
+		panelCuadratica.add(lbltiempoLog_1_1_1_1_1);
+		
+		JLabel labTiempoCuadratico = new JLabel("................");
+		labTiempoCuadratico.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoCuadratico.setBounds(197, 263, 124, 29);
+		panelCuadratica.add(labTiempoCuadratico);
+		
 		Panel panelCubica = new Panel();
-		panelCubica.setBounds(470, 350, 320, 220);
+		panelCubica.setBounds(470, 392, 360, 323);
 		contentPane.add(panelCubica);
 		panelCubica.setLayout(null);
 		
+		progressBarCubica = new JProgressBar();
+		progressBarCubica.setStringPainted(true);
+		progressBarCubica.setOrientation(SwingConstants.VERTICAL);
+		progressBarCubica.setForeground(new Color(255, 204, 51));
+		progressBarCubica.setEnabled(false);
+		progressBarCubica.setBackground(SystemColor.menu);
+		progressBarCubica.setBounds(39, 76, 130, 166);
+		panelCubica.add(progressBarCubica);
+		
+		JLabel JlabelPintaCubico = new JLabel("");
+		JlabelPintaCubico.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
+		JlabelPintaCubico.setBackground(SystemColor.menu);
+		JlabelPintaCubico.setAutoscrolls(true);
+		JlabelPintaCubico.setBounds(10, 11, 291, 281);
+		panelCubica.add(JlabelPintaCubico);
+		
+		JLabel lblLlenadoCubico = new JLabel("LLENADO CUBICO");
+		lblLlenadoCubico.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblLlenadoCubico.setBounds(20, 298, 233, 25);
+		panelCubica.add(lblLlenadoCubico);
+		
+		JLabel lbltiempoLog_1_1_1_1 = new JLabel("Tiempo de Ejecucion");
+		lbltiempoLog_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1.setBounds(198, 237, 152, 15);
+		panelCubica.add(lbltiempoLog_1_1_1_1);
+		
+		JLabel labTiempoCubico = new JLabel("................");
+		labTiempoCubico.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoCubico.setBounds(197, 263, 124, 29);
+		panelCubica.add(labTiempoCubico);
+		
 		Panel panelExp = new Panel();
-		panelExp.setBounds(850, 350, 320, 220);
+		panelExp.setBounds(890, 392, 360, 323);
 		contentPane.add(panelExp);
 		panelExp.setLayout(null);
+		
+		JProgressBar progressBarExpon = new JProgressBar();
+		progressBarExpon.setStringPainted(true);
+		progressBarExpon.setOrientation(SwingConstants.VERTICAL);
+		progressBarExpon.setForeground(new Color(255, 204, 51));
+		progressBarExpon.setEnabled(false);
+		progressBarExpon.setBackground(SystemColor.menu);
+		progressBarExpon.setBounds(38, 76, 130, 166);
+		panelExp.add(progressBarExpon);
+		
+		JLabel JlabelPintaExponencial = new JLabel("");
+		JlabelPintaExponencial.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
+		JlabelPintaExponencial.setBackground(SystemColor.menu);
+		JlabelPintaExponencial.setAutoscrolls(true);
+		JlabelPintaExponencial.setBounds(10, 11, 291, 281);
+		panelExp.add(JlabelPintaExponencial);
+		
+		JLabel lblLlenadoExponencial = new JLabel("LLENADO EXPONENCIAL");
+		lblLlenadoExponencial.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblLlenadoExponencial.setBounds(30, 298, 233, 25);
+		panelExp.add(lblLlenadoExponencial);
+		
+		JLabel lbltiempoLog_1_1_1 = new JLabel("Tiempo de Ejecucion");
+		lbltiempoLog_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1.setBounds(198, 237, 152, 15);
+		panelExp.add(lbltiempoLog_1_1_1);
+		
+		JLabel labTiempoExp = new JLabel("................");
+		labTiempoExp.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoExp.setBounds(197, 263, 124, 29);
+		panelExp.add(labTiempoExp);
+		
+		JProgressBar progressBarNlogN = new JProgressBar();
+		progressBarNlogN.setStringPainted(true);
+		progressBarNlogN.setOrientation(SwingConstants.VERTICAL);
+		progressBarNlogN.setForeground(new Color(255, 204, 51));
+		progressBarNlogN.setEnabled(false);
+		progressBarNlogN.setBackground(SystemColor.menu);
+		progressBarNlogN.setBounds(40, 76, 130, 166);
+		panelLineal.add(progressBarNlogN);
 //Definicion de partes de log
 		JPanel JPanelBeerLog = new JPanel();
 		JPanelBeerLog.setForeground(Color.YELLOW);
@@ -125,137 +240,56 @@ public class  Interfaz extends JFrame {
 		JPanelBeerLog.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JPanelBeerLog.setLayout(null);
 		
-		int count=1;
-		int fija= 33;
-        //creacion automatica
-		for (int i =0; i<9;i++) {
-			JLabel JLabelBEERX = new JLabel("Jlabel"+count);
-			JLabelBEERX.setBackground(Color.LIGHT_GRAY);
-			JLabelBEERX.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-			JLabelBEERX.setFont(new Font("Stencil", Font.BOLD, 18));
-			JLabelBEERX.setForeground(Color.YELLOW);
-			JLabelBEERX.setVerticalTextPosition(SwingConstants.BOTTOM);
-			fija = fija + 16;
-			JLabelBEERX.setBounds(24, fija, 90, 16); //posicion del label
-			JLabelBEERX.setVisible(true);
-			panelLog.add(JLabelBEERX);
-			panelLog.repaint();
-			count++;
-		};
-		/**
+		JLabel labTiempoLog = new JLabel("................");
+		labTiempoLog.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoLog.setBounds(198, 258, 124, 29);
+		panelLog.add(labTiempoLog);
+		
 
-		JLabel JlabelPintaLog = new JLabel("");
-		JlabelPintaLog.setLabelFor(panelLog);
-		JlabelPintaLog.setBounds(0, 11, 175, 203);
-		panelLog.add(JlabelPintaLog);
-		JlabelPintaLog.setAutoscrolls(true);
-		JlabelPintaLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/PintaRender.png")));
-		
-		JPanel JPanelBeerLog = new JPanel();
-		JPanelBeerLog.setForeground(Color.YELLOW);
-		JPanelBeerLog.setDebugGraphicsOptions(DebugGraphics.BUFFERED_OPTION);
-		JPanelBeerLog.setBounds(54, 106, 1, 1);
-		panelLineal.add(JPanelBeerLog);
-		JPanelBeerLog.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		JPanelBeerLog.setLayout(null);
-
-		
-		JLabel JLabelBEER1Log = new JLabel("");
-		JLabelBEER1Log.setBackground(Color.LIGHT_GRAY);
-		JLabelBEER1Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER1Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER1Log.setForeground(Color.YELLOW);
-		JLabelBEER1Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER1Log.setBounds(24, 161, 90, 16);
-		JLabelBEER1Log.setVisible(false);
-		panelLog.add(JLabelBEER1Log);
-		
-		JLabel JLabelBEER2Log = new JLabel("");
-		JLabelBEER2Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER2Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER2Log.setForeground(Color.YELLOW);
-		JLabelBEER2Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER2Log.setBounds(24, 145, 90, 16);
-		JLabelBEER2Log.setVisible(false);
-		panelLog.add(JLabelBEER2Log);
-		
-		JLabel JLabelBEER3Log = new JLabel("");
-		JLabelBEER3Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER3Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER3Log.setForeground(Color.YELLOW);
-		JLabelBEER3Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER3Log.setBounds(24, 129, 90, 16);
-		JLabelBEER3Log.setVisible(false);
-		panelLog.add(JLabelBEER3Log);
-		
-		
-		JLabel JLabelBEER4Log = new JLabel("");
-		JLabelBEER4Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER4Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER4Log.setForeground(Color.YELLOW);
-		JLabelBEER4Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER4Log.setBounds(24, 113, 90, 16);
-		JLabelBEER4Log.setVisible(false);
-		panelLog.add(JLabelBEER4Log);
-		
-		JLabel JLabelBEER5Log = new JLabel("");
-		JLabelBEER5Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER5Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER5Log.setForeground(Color.YELLOW);
-		JLabelBEER5Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER5Log.setBounds(24, 97, 90, 16);
-		JLabelBEER5Log.setVisible(false);
-		panelLog.add(JLabelBEER5Log);
-		
-		JLabel JLabelBEER6Log = new JLabel("");
-		JLabelBEER6Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));	
-		JLabelBEER6Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER6Log.setForeground(Color.YELLOW);
-		JLabelBEER6Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER6Log.setBounds(24, 81, 90, 16);
-		JLabelBEER6Log.setVisible(false);
-		panelLog.add(JLabelBEER6Log);
-		
-		JLabel JLabelBEER7Log = new JLabel("");
-		JLabelBEER7Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER7Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER7Log.setForeground(Color.YELLOW);
-		JLabelBEER7Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER7Log.setBounds(24, 65, 90, 16);
-		JLabelBEER7Log.setVisible(false);
-		panelLog.add(JLabelBEER7Log);
-		
-		JLabel JLabelBEER8Log = new JLabel("");
-		JLabelBEER8Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER8Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER8Log.setForeground(Color.YELLOW);
-		JLabelBEER8Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER8Log.setBounds(24, 49, 90, 16);
-		JLabelBEER8Log.setVisible(false);
-		panelLog.add(JLabelBEER8Log);
-		
-		JLabel JLabelBEER9Log = new JLabel("");
-		JLabelBEER9Log.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER9Log.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER9Log.setForeground(Color.YELLOW);
-		JLabelBEER9Log.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER9Log.setBounds(24, 33, 90, 16);
-		JLabelBEER9Log.setVisible(false);
-		panelLog.add(JLabelBEER9Log);
-		
-			 * 
-		 */	
 		
 		JLabel lbltiempoLog = new JLabel("Tiempo de Ejecucion");
-		lbltiempoLog.setBounds(191, 49, 100, 14);
+		lbltiempoLog.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog.setBounds(198, 233, 152, 15);
 		panelLog.add(lbltiempoLog);
+		
+		JProgressBar progressBarLog = new JProgressBar();
+		progressBarLog.setStringPainted(true);
+		progressBarLog.setEnabled(false);
+		progressBarLog.setBackground(SystemColor.control);
+		progressBarLog.setBounds(41, 82, 130, 166);
+		panelLog.add(progressBarLog);
+		progressBarLog.setForeground(new Color(255, 204, 51));
+		progressBarLog.setOrientation(SwingConstants.VERTICAL);
+		
+
+		JLabel JlabelPintaLog = new JLabel("");
+		JlabelPintaLog.setBackground(SystemColor.control);
+		JlabelPintaLog.setBounds(10, 11, 291, 281);
+		panelLog.add(JlabelPintaLog);
+		JlabelPintaLog.setLabelFor(panelLog);
+		JlabelPintaLog.setAutoscrolls(true);
+		JlabelPintaLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
+		
+		JLabel lblNewLabel = new JLabel("LLENADO LOGARITMICO");
+		lblNewLabel.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblNewLabel.setBounds(20, 298, 233, 25);
+		panelLog.add(lblNewLabel);
+		
+		JProgressBar progressBarLin = new JProgressBar();
+		progressBarLin.setStringPainted(true);
+		progressBarLin.setOrientation(SwingConstants.VERTICAL);
+		progressBarLin.setForeground(new Color(255, 204, 51));
+		progressBarLin.setEnabled(false);
+		progressBarLin.setBackground(SystemColor.menu);
+		progressBarLin.setBounds(40, 76, 130, 166);
+		panelNLogN.add(progressBarLin);
 //Definicion de partes de nlog
 		JLabel JlabelPintaNLog = new JLabel("");
 		JlabelPintaNLog.setLabelFor(panelLineal);
-		JlabelPintaNLog.setBounds(0, 11, 175, 203);
+		JlabelPintaNLog.setBounds(10, 11, 291, 281);
 		panelNLogN.add(JlabelPintaNLog);
 		JlabelPintaNLog.setAutoscrolls(true);
-		JlabelPintaNLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/PintaRender.png")));
+		JlabelPintaNLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
 		
 		JPanel JPanelBeerNLog = new JPanel();
 		JPanelBeerNLog.setForeground(Color.YELLOW);
@@ -264,101 +298,28 @@ public class  Interfaz extends JFrame {
 		panelNLogN.add(JPanelBeerNLog);
 		JPanelBeerNLog.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JPanelBeerNLog.setLayout(null);
-
 		
-		JLabel JLabelBEER1NLog = new JLabel("");
-		JLabelBEER1NLog.setBackground(Color.LIGHT_GRAY);
-		JLabelBEER1NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER1NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER1NLog.setForeground(Color.YELLOW);
-		JLabelBEER1NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER1NLog.setBounds(24, 161, 90, 16);
-		JLabelBEER1NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER1NLog);
+		JLabel lblLlenadoLineal = new JLabel("LLENADO LINEAL");
+		lblLlenadoLineal.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblLlenadoLineal.setBounds(10, 298, 233, 25);
+		panelNLogN.add(lblLlenadoLineal);
 		
-		JLabel JLabelBEER2NLog = new JLabel("");
-		JLabelBEER2NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER2NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER2NLog.setForeground(Color.YELLOW);
-		JLabelBEER2NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER2NLog.setBounds(24, 145, 90, 16);
-		JLabelBEER2NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER2NLog);
+		JLabel lbltiempoLog_1 = new JLabel("Tiempo de Ejecucion");
+		lbltiempoLog_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1.setBounds(198, 231, 152, 15);
+		panelNLogN.add(lbltiempoLog_1);
 		
-		JLabel JLabelBEER3NLog = new JLabel("");
-		JLabelBEER3NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER3NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER3NLog.setForeground(Color.YELLOW);
-		JLabelBEER3NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER3NLog.setBounds(24, 129, 90, 16);
-		JLabelBEER3NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER3NLog);
-		
-		
-		JLabel JLabelBEER4NLog = new JLabel("");
-		JLabelBEER4NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER4NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER4NLog.setForeground(Color.YELLOW);
-		JLabelBEER4NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER4NLog.setBounds(24, 113, 90, 16);
-		JLabelBEER4NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER4NLog);
-		
-		JLabel JLabelBEER5NLog = new JLabel("");
-		JLabelBEER5NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER5NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER5NLog.setForeground(Color.YELLOW);
-		JLabelBEER5NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER5NLog.setBounds(24, 97, 90, 16);
-		JLabelBEER5NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER5NLog);
-		
-		JLabel JLabelBEER6NLog = new JLabel("");
-		JLabelBEER6NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));	
-		JLabelBEER6NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER6NLog.setForeground(Color.YELLOW);
-		JLabelBEER6NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER6NLog.setBounds(24, 81, 90, 16);
-		JLabelBEER6NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER6NLog);
-		
-		JLabel JLabelBEER7NLog = new JLabel("");
-		JLabelBEER7NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER7NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER7NLog.setForeground(Color.YELLOW);
-		JLabelBEER7NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER7NLog.setBounds(24, 65, 90, 16);
-		JLabelBEER7NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER7NLog);
-		
-		JLabel JLabelBEER8NLog = new JLabel("");
-		JLabelBEER8NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER8NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER8NLog.setForeground(Color.YELLOW);
-		JLabelBEER8NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER8NLog.setBounds(24, 49, 90, 16);
-		JLabelBEER8NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER8NLog);
-		
-		JLabel JLabelBEER9NLog = new JLabel("");
-		JLabelBEER9NLog.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER9NLog.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER9NLog.setForeground(Color.YELLOW);
-		JLabelBEER9NLog.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER9NLog.setBounds(24, 33, 90, 16);
-		JLabelBEER9NLog.setVisible(false);
-		panelNLogN.add(JLabelBEER9NLog);
-		
-		JLabel lbltiempoNLogN = new JLabel("Tiempo de Ejecucion");
-		lbltiempoNLogN.setBounds(191, 49, 100, 14);
-		panelNLogN.add(lbltiempoNLogN);		
+		JLabel labTiempoLin = new JLabel("................");
+		labTiempoLin.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoLin.setBounds(197, 257, 124, 29);
+		panelNLogN.add(labTiempoLin);
 //Definicion de partes de lineal		
 		JLabel JlabelPintaLineal = new JLabel("");
 		JlabelPintaLineal.setLabelFor(panelLineal);
-		JlabelPintaLineal.setBounds(0, 11, 175, 203);
+		JlabelPintaLineal.setBounds(10, 11, 291, 281);
 		panelLineal.add(JlabelPintaLineal);
 		JlabelPintaLineal.setAutoscrolls(true);
-		JlabelPintaLineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/PintaRender.png")));
+		JlabelPintaLineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/BeerUlt.png")));
 		
 		JPanel JPanelBeerLineal = new JPanel();
 		JPanelBeerLineal.setForeground(Color.YELLOW);
@@ -372,71 +333,6 @@ public class  Interfaz extends JFrame {
 		JLabel jLabelFondo = new JLabel("");
 		jLabelFondo.setBounds(0, 0, 1360, 739);
 		jLabelFondo.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/fondo2.png")));
-
-		JLabel JLabelBEER1Lineal = new JLabel("");
-		JLabelBEER1Lineal.setBackground(Color.LIGHT_GRAY);
-		JLabelBEER1Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER1Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER1Lineal.setForeground(Color.YELLOW);
-		JLabelBEER1Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER1Lineal.setBounds(24, 161, 90, 16);
-		JLabelBEER1Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER1Lineal);
-		
-		JLabel JLabelBEER2Lineal = new JLabel("");
-		JLabelBEER2Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER2Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER2Lineal.setForeground(Color.YELLOW);
-		JLabelBEER2Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER2Lineal.setBounds(24, 145, 90, 16);
-		JLabelBEER2Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER2Lineal);
-		
-		JLabel JLabelBEER3Lineal = new JLabel("");
-		JLabelBEER3Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER3Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER3Lineal.setForeground(Color.YELLOW);
-		JLabelBEER3Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER3Lineal.setBounds(24, 129, 90, 16);
-		JLabelBEER3Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER3Lineal);
-		
-		
-		JLabel JLabelBEER4Lineal = new JLabel("");
-		JLabelBEER4Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER4Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER4Lineal.setForeground(Color.YELLOW);
-		JLabelBEER4Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER4Lineal.setBounds(24, 113, 90, 16);
-		JLabelBEER4Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER4Lineal);
-		
-		JLabel JLabelBEER5Lineal = new JLabel("");
-		JLabelBEER5Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER5Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER5Lineal.setForeground(Color.YELLOW);
-		JLabelBEER5Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER5Lineal.setBounds(24, 97, 90, 16);
-		JLabelBEER5Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER5Lineal);
-		
-		JLabel JLabelBEER6Lineal = new JLabel("");
-		JLabelBEER6Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));	
-		JLabelBEER6Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER6Lineal.setForeground(Color.YELLOW);
-		JLabelBEER6Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER6Lineal.setBounds(24, 81, 90, 16);
-		JLabelBEER6Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER6Lineal);
-		
-		JLabel JLabelBEER7Lineal = new JLabel("");
-		JLabelBEER7Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER7Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER7Lineal.setForeground(Color.YELLOW);
-		JLabelBEER7Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER7Lineal.setBounds(24, 65, 90, 16);
-		JLabelBEER7Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER7Lineal);
 		
 		JLabel JLabelBEER8Lineal = new JLabel("");
 		JLabelBEER8Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
@@ -445,57 +341,48 @@ public class  Interfaz extends JFrame {
 		JLabelBEER8Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
 		JLabelBEER8Lineal.setBounds(24, 49, 90, 16);
 		JLabelBEER8Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER8Lineal);
 		
-		JLabel JLabelBEER9Lineal = new JLabel("");
-		JLabelBEER9Lineal.setIcon(new ImageIcon(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/beer.png")));
-		JLabelBEER9Lineal.setVerticalTextPosition(SwingConstants.BOTTOM);
-		JLabelBEER9Lineal.setForeground(Color.YELLOW);
-		JLabelBEER9Lineal.setFont(new Font("Stencil", Font.BOLD, 18));
-		JLabelBEER9Lineal.setBounds(24, 33, 90, 16);
-		JLabelBEER9Lineal.setVisible(false);
-		panelLineal.add(JLabelBEER9Lineal);
+		JLabel lblLlenadoNLog = new JLabel("LLENADO N LOG N");
+		lblLlenadoNLog.setFont(new Font("Ink Free", Font.PLAIN, 17));
+		lblLlenadoNLog.setBounds(10, 298, 233, 25);
+		panelLineal.add(lblLlenadoNLog);
 		
-		JLabel lbltiempo = new JLabel("Tiempo de Ejecucion");
-		lbltiempo.setBounds(191, 49, 100, 14);
-		panelLineal.add(lbltiempo);
+		JLabel lbltiempoLog_1_1 = new JLabel("Tiempo de Ejecucion");
+		lbltiempoLog_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1.setBounds(198, 232, 152, 15);
+		panelLineal.add(lbltiempoLog_1_1);
+		
+		JLabel labTiempoNlogN = new JLabel("................");
+		labTiempoNlogN.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoNlogN.setBounds(197, 258, 124, 29);
+		panelLineal.add(labTiempoNlogN);
 		//Definicion de partes de nlog		
 
 		btnNewButton.addMouseListener(new MouseAdapter() {
+			 
+				 
+		
+	
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//log
-			//	JLabelBEER1Log.setVisible(true);
-			//	JLabelBEER2Log.setVisible(true);
-			//	JLabelBEER3Log.setVisible(true);
-			//	JLabelBEER4Log.setVisible(true);
-			//	JLabelBEER5Log.setVisible(true);
-			//	JLabelBEER6Log.setVisible(true);
-			//	JLabelBEER7Log.setVisible(true);
-			//	JLabelBEER8Log.setVisible(true);
-			//	JLabelBEER9Log.setVisible(true);
-				//LogN
-				JLabelBEER1NLog.setVisible(true);
-				JLabelBEER2NLog.setVisible(true);
-				JLabelBEER3NLog.setVisible(true);
-				JLabelBEER4NLog.setVisible(true);
-				JLabelBEER5NLog.setVisible(true);
-				JLabelBEER6NLog.setVisible(true);
-				JLabelBEER7NLog.setVisible(true);
-				JLabelBEER8NLog.setVisible(true);
-				JLabelBEER9NLog.setVisible(true);
-				//lineal
-				JLabelBEER1Lineal.setVisible(true);
-				JLabelBEER2Lineal.setVisible(true);
-				JLabelBEER3Lineal.setVisible(true);
-				JLabelBEER4Lineal.setVisible(true);
-				JLabelBEER5Lineal.setVisible(true);
-				JLabelBEER6Lineal.setVisible(true);
-				JLabelBEER7Lineal.setVisible(true);
-				JLabelBEER8Lineal.setVisible(true);
-				JLabelBEER9Lineal.setVisible(true);
+	            String litros = txtFieldQlitros.getText();
+	            
+				tp1_LosSherpas.main.LlenadorLogaritmico log = new LlenadorLogaritmico(Integer.parseInt(litros),progressBarLog,labTiempoLog);
+			    tp1_LosSherpas.main.LlenadorLineal linea = new LlenadorLineal(Integer.parseInt(litros),progressBarLin,labTiempoLin);
+				tp1_LosSherpas.main.LlenadorNLogaritmico nLogN = new LlenadorNLogaritmico(Integer.parseInt(litros),progressBarNlogN,labTiempoNlogN);
+				tp1_LosSherpas.main.LlenadorCuadratico cuadratico = new LlenadorCuadratico(Integer.parseInt(litros),progressBarCuadratica,labTiempoCuadratico);
+				tp1_LosSherpas.main.LlenadorCubico cubico = new LlenadorCubico(Integer.parseInt(litros),progressBarCubica,labTiempoCubico);
+				tp1_LosSherpas.main.LlenadorExponencial exponencial = new LlenadorExponencial(Integer.parseInt(litros),progressBarExpon,labTiempoExp);
 				
-						
+				log.start();
+				linea.start();
+				nLogN.start();
+				cuadratico.start();
+				cubico.start();
+				exponencial.start();
+				
+
+
 				
 		     }
 		});	

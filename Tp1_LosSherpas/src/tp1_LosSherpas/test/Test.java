@@ -16,22 +16,22 @@ public class Test {
 		String cadena1 = "Hola";
 		String cadena2 = "Sherpas";
 		System.out.println(cadena1+" "+cadena2);
-		JFrame vInterfaz = new Interfaz();
-		vInterfaz.setVisible(true);
+		//JFrame vInterfaz = new Interfaz();
+		//vInterfaz.setVisible(true);
 		//creacion de todos los objetos
-		int tamanioMuestra= 10;
-		LlenadorLineal lineal = new LlenadorLineal(tamanioMuestra,vInterfaz);
-		LlenadorLogaritmico logaritmico = new LlenadorLogaritmico(tamanioMuestra,vInterfaz);
-		LlenadorCuadratico cuadratico = new LlenadorCuadratico(tamanioMuestra,vInterfaz);
-		LlenadorCubico cubico = new LlenadorCubico(tamanioMuestra,vInterfaz);
-		LlenadorNLogaritmico nlogaritmico = new LlenadorNLogaritmico(tamanioMuestra,vInterfaz);
+	///	int tamanioMuestra= 10;
+		//LlenadorLineal lineal = new LlenadorLineal(tamanioMuestra,);
+		//LlenadorLogaritmico logaritmico = new LlenadorLogaritmico(tamanioMuestra);
+		//LlenadorCuadratico cuadratico = new LlenadorCuadratico(tamanioMuestra);
+		//LlenadorCubico cubico = new LlenadorCubico(tamanioMuestra);
+		//LlenadorNLogaritmico nlogaritmico = new LlenadorNLogaritmico(tamanioMuestra);
 		//LlenadorExponencial exponencial = new LlenadorExponencial(tamanioMuestra);
 //		tienen que ir todos los arranques juntos sino no se cumple la condicion de arranque
-		logaritmico.start();//1
-		lineal.start();//2
-		nlogaritmico.start();//3 
-		cuadratico.start();//4
-		cubico.start();//5
+	//	logaritmico.start();//1
+	//	lineal.start();//2
+	//	nlogaritmico.start();//3 
+	//	cuadratico.start();//4
+	//	cubico.start();//5
 		//exponencial.start();//6
 		
 	}

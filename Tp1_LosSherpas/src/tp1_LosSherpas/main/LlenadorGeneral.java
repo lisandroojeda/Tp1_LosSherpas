@@ -1,6 +1,8 @@
 package tp1_LosSherpas.main;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 
 
@@ -9,11 +11,13 @@ public abstract class LlenadorGeneral extends Thread {
 	long tInicio;
 	long tFinal;
 	long tiempo;
-    JFrame interfaz;
+    JProgressBar progressbar;
+    JLabel tiempoT;
 	
-	public LlenadorGeneral(int vTMuestra,JFrame vIntefaz) {
+	public LlenadorGeneral(int vTMuestra,JProgressBar bar,JLabel tiempo) {
 		this.tamanioMuestra = vTMuestra;
-		this.interfaz = vIntefaz; // le paso la interfaz completa ... 
+		this.progressbar = bar;
+		this.tiempoT = tiempo;
 		
 	}
     
@@ -28,5 +32,18 @@ public abstract class LlenadorGeneral extends Thread {
 
 		 System.out.println("Hora actual : " + hours + ":"+ minutes+":"+seconds);
 	}
+	
+	protected String tiempoS(long tiempo) {
+	//	long millis = System.currentTimeMillis();
+		
+		 int hours   = (int) ((tiempo / (1000*60*60)) % 24);
+		 int minutes = (int) ((tiempo / (1000*60)) % 60);
+		 int seconds = (int) (tiempo / 1000) % 60 ;
+
+		 return  hours + ":"+ minutes+":"+seconds;
+	}
+	
+	
+
 	
 }

@@ -1,11 +1,13 @@
 package tp1_LosSherpas.main;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 public class LlenadorExponencial extends LlenadorGeneral {
 
-	public LlenadorExponencial(int vTMuestra,JFrame vInterfaz) {
-		super (vTMuestra,vInterfaz);
+	public LlenadorExponencial(int vTMuestra, JProgressBar bar,JLabel tiempo) {
+		super (vTMuestra,bar,tiempo);
 	}
 
 	@Override
