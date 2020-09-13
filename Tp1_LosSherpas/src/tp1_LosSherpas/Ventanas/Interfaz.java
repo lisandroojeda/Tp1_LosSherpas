@@ -1,6 +1,6 @@
 package tp1_LosSherpas.Ventanas;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,18 +8,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.CardLayout;
+
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
+
 import java.awt.Panel;
-import java.awt.Button;
+
 import java.awt.Color;
-import java.awt.Canvas;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Label;
+
 import javax.swing.border.TitledBorder;
 
 import tp1_LosSherpas.main.LlenadorCuadratico;
@@ -29,21 +29,19 @@ import tp1_LosSherpas.main.LlenadorLineal;
 import tp1_LosSherpas.main.LlenadorLogaritmico;
 import tp1_LosSherpas.main.LlenadorNLogaritmico;
 
-import java.awt.Rectangle;
-import java.awt.ComponentOrientation;
 import javax.swing.JProgressBar;
-import java.awt.Component;
+
 import javax.swing.JTextField;
-import javax.swing.border.EtchedBorder;
+
 import javax.swing.DebugGraphics;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
-import java.awt.Window.Type;
+
 import java.awt.SystemColor;
-import java.util.*;
+
 public class  Interfaz extends JFrame {
 
 	private JPanel contentPane;
@@ -101,24 +99,29 @@ public class  Interfaz extends JFrame {
 		contentPane.add(btnNewButton);
 
 		Panel panelLog = new Panel();
-		panelLog.setBounds(34, 40, 360, 323);
+		panelLog.setBounds(34, 40, 410, 323);
 		contentPane.add(panelLog);
 		panelLog.setLayout(null);
 		
 		Panel panelNLogN = new Panel();
-		panelNLogN.setBounds(470, 40, 360, 323);
+		panelNLogN.setBounds(470, 40, 410, 323);
 		contentPane.add(panelNLogN);
 		panelNLogN.setLayout(null);
 
 		Panel panelLineal = new Panel();
-		panelLineal.setBounds(890,40, 360, 323);
+		panelLineal.setBounds(899,40, 410, 323);
 		contentPane.add(panelLineal);
 		panelLineal.setLayout(null);
 		
 		Panel panelCuadratica = new Panel();
-		panelCuadratica.setBounds(34, 392, 360, 323);
+		panelCuadratica.setBounds(34, 392, 410, 323);
 		contentPane.add(panelCuadratica);
 		panelCuadratica.setLayout(null);
+		
+		JLabel labTiempoCuadratico = new JLabel("................");
+		labTiempoCuadratico.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoCuadratico.setBounds(258, 69, 142, 29);
+		panelCuadratica.add(labTiempoCuadratico);
 		
 		JProgressBar progressBarCuadratica = new JProgressBar();
 		progressBarCuadratica.setStringPainted(true);
@@ -143,18 +146,28 @@ public class  Interfaz extends JFrame {
 		
 		JLabel lbltiempoLog_1_1_1_1_1 = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog_1_1_1_1_1.setBounds(198, 237, 152, 15);
+		lbltiempoLog_1_1_1_1_1.setBounds(248, 43, 152, 15);
 		panelCuadratica.add(lbltiempoLog_1_1_1_1_1);
 		
-		JLabel labTiempoCuadratico = new JLabel("................");
-		labTiempoCuadratico.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoCuadratico.setBounds(197, 263, 124, 29);
-		panelCuadratica.add(labTiempoCuadratico);
+		JLabel lbltiempoLog_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1.setBounds(268, 107, 132, 15);
+		panelCuadratica.add(lbltiempoLog_1_1_1_1_1_1);
+		
+		JLabel labCiclosCuadratico = new JLabel("................");
+		labCiclosCuadratico.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosCuadratico.setBounds(258, 133, 142, 29);
+		panelCuadratica.add(labCiclosCuadratico);
 		
 		Panel panelCubica = new Panel();
-		panelCubica.setBounds(470, 392, 360, 323);
+		panelCubica.setBounds(470, 392, 410, 323);
 		contentPane.add(panelCubica);
 		panelCubica.setLayout(null);
+		
+		JLabel labTiempoCubico = new JLabel("................");
+		labTiempoCubico.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoCubico.setBounds(247, 60, 124, 29);
+		panelCubica.add(labTiempoCubico);
 		
 		progressBarCubica = new JProgressBar();
 		progressBarCubica.setStringPainted(true);
@@ -179,18 +192,28 @@ public class  Interfaz extends JFrame {
 		
 		JLabel lbltiempoLog_1_1_1_1 = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog_1_1_1_1.setBounds(198, 237, 152, 15);
+		lbltiempoLog_1_1_1_1.setBounds(248, 34, 152, 15);
 		panelCubica.add(lbltiempoLog_1_1_1_1);
 		
-		JLabel labTiempoCubico = new JLabel("................");
-		labTiempoCubico.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoCubico.setBounds(197, 263, 124, 29);
-		panelCubica.add(labTiempoCubico);
+		JLabel lbltiempoLog_1_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1_1.setBounds(268, 95, 132, 15);
+		panelCubica.add(lbltiempoLog_1_1_1_1_1_1_1);
+		
+		JLabel labCiclosCubi = new JLabel("................");
+		labCiclosCubi.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosCubi.setBounds(258, 121, 142, 29);
+		panelCubica.add(labCiclosCubi);
 		
 		Panel panelExp = new Panel();
-		panelExp.setBounds(890, 392, 360, 323);
+		panelExp.setBounds(898, 392, 410, 323);
 		contentPane.add(panelExp);
 		panelExp.setLayout(null);
+		
+		JLabel labTiempoExp = new JLabel("................");
+		labTiempoExp.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoExp.setBounds(247, 58, 124, 29);
+		panelExp.add(labTiempoExp);
 		
 		JProgressBar progressBarExpon = new JProgressBar();
 		progressBarExpon.setStringPainted(true);
@@ -215,13 +238,23 @@ public class  Interfaz extends JFrame {
 		
 		JLabel lbltiempoLog_1_1_1 = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog_1_1_1.setBounds(198, 237, 152, 15);
+		lbltiempoLog_1_1_1.setBounds(248, 32, 152, 15);
 		panelExp.add(lbltiempoLog_1_1_1);
 		
-		JLabel labTiempoExp = new JLabel("................");
-		labTiempoExp.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoExp.setBounds(197, 263, 124, 29);
-		panelExp.add(labTiempoExp);
+		JLabel lbltiempoLog_1_1_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1_1_1.setBounds(268, 93, 132, 15);
+		panelExp.add(lbltiempoLog_1_1_1_1_1_1_1_1);
+		
+		JLabel labCiclosExp = new JLabel("................");
+		labCiclosExp.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosExp.setBounds(258, 119, 142, 29);
+		panelExp.add(labCiclosExp);
+		
+		JLabel labTiempoNlogN = new JLabel("................");
+		labTiempoNlogN.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoNlogN.setBounds(247, 60, 124, 29);
+		panelLineal.add(labTiempoNlogN);
 		
 		JProgressBar progressBarNlogN = new JProgressBar();
 		progressBarNlogN.setStringPainted(true);
@@ -242,14 +275,14 @@ public class  Interfaz extends JFrame {
 		
 		JLabel labTiempoLog = new JLabel("................");
 		labTiempoLog.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoLog.setBounds(198, 258, 124, 29);
+		labTiempoLog.setBounds(248, 58, 124, 29);
 		panelLog.add(labTiempoLog);
 		
 
 		
 		JLabel lbltiempoLog = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog.setBounds(198, 233, 152, 15);
+		lbltiempoLog.setBounds(248, 33, 152, 15);
 		panelLog.add(lbltiempoLog);
 		
 		JProgressBar progressBarLog = new JProgressBar();
@@ -274,6 +307,21 @@ public class  Interfaz extends JFrame {
 		lblNewLabel.setFont(new Font("Ink Free", Font.PLAIN, 17));
 		lblNewLabel.setBounds(20, 298, 233, 25);
 		panelLog.add(lblNewLabel);
+		
+		JLabel lbltiempoLog_1_1_1_1_1_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1_1_1_1_1_1.setBounds(268, 109, 132, 15);
+		panelLog.add(lbltiempoLog_1_1_1_1_1_1_1_1_1_1_1);
+		
+		JLabel labCiclosLog = new JLabel("................");
+		labCiclosLog.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosLog.setBounds(258, 135, 142, 29);
+		panelLog.add(labCiclosLog);
+		
+		JLabel labTiempoLin = new JLabel("................");
+		labTiempoLin.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labTiempoLin.setBounds(247, 62, 124, 29);
+		panelNLogN.add(labTiempoLin);
 		
 		JProgressBar progressBarLin = new JProgressBar();
 		progressBarLin.setStringPainted(true);
@@ -306,13 +354,18 @@ public class  Interfaz extends JFrame {
 		
 		JLabel lbltiempoLog_1 = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog_1.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog_1.setBounds(198, 231, 152, 15);
+		lbltiempoLog_1.setBounds(248, 36, 152, 15);
 		panelNLogN.add(lbltiempoLog_1);
 		
-		JLabel labTiempoLin = new JLabel("................");
-		labTiempoLin.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoLin.setBounds(197, 257, 124, 29);
-		panelNLogN.add(labTiempoLin);
+		JLabel lbltiempoLog_1_1_1_1_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1_1_1_1_1.setBounds(267, 105, 132, 15);
+		panelNLogN.add(lbltiempoLog_1_1_1_1_1_1_1_1_1_1);
+		
+		JLabel labCiclosLin = new JLabel("................");
+		labCiclosLin.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosLin.setBounds(257, 131, 142, 29);
+		panelNLogN.add(labCiclosLin);
 //Definicion de partes de lineal		
 		JLabel JlabelPintaLineal = new JLabel("");
 		JlabelPintaLineal.setLabelFor(panelLineal);
@@ -349,13 +402,18 @@ public class  Interfaz extends JFrame {
 		
 		JLabel lbltiempoLog_1_1 = new JLabel("Tiempo de Ejecucion");
 		lbltiempoLog_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
-		lbltiempoLog_1_1.setBounds(198, 232, 152, 15);
+		lbltiempoLog_1_1.setBounds(248, 34, 152, 15);
 		panelLineal.add(lbltiempoLog_1_1);
 		
-		JLabel labTiempoNlogN = new JLabel("................");
-		labTiempoNlogN.setFont(new Font("Rubik", Font.PLAIN, 14));
-		labTiempoNlogN.setBounds(197, 258, 124, 29);
-		panelLineal.add(labTiempoNlogN);
+		JLabel lbltiempoLog_1_1_1_1_1_1_1_1_1 = new JLabel("Ciclos");
+		lbltiempoLog_1_1_1_1_1_1_1_1_1.setFont(new Font("Rubik", Font.BOLD, 12));
+		lbltiempoLog_1_1_1_1_1_1_1_1_1.setBounds(268, 102, 132, 15);
+		panelLineal.add(lbltiempoLog_1_1_1_1_1_1_1_1_1);
+		
+		JLabel labCiclosNlogN = new JLabel("................");
+		labCiclosNlogN.setFont(new Font("Rubik", Font.PLAIN, 14));
+		labCiclosNlogN.setBounds(258, 128, 142, 29);
+		panelLineal.add(labCiclosNlogN);
 		//Definicion de partes de nlog		
 
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -367,12 +425,12 @@ public class  Interfaz extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 	            String litros = txtFieldQlitros.getText();
 	            
-				tp1_LosSherpas.main.LlenadorLogaritmico log = new LlenadorLogaritmico(Integer.parseInt(litros),progressBarLog,labTiempoLog);
-			    tp1_LosSherpas.main.LlenadorLineal linea = new LlenadorLineal(Integer.parseInt(litros),progressBarLin,labTiempoLin);
-				tp1_LosSherpas.main.LlenadorNLogaritmico nLogN = new LlenadorNLogaritmico(Integer.parseInt(litros),progressBarNlogN,labTiempoNlogN);
-				tp1_LosSherpas.main.LlenadorCuadratico cuadratico = new LlenadorCuadratico(Integer.parseInt(litros),progressBarCuadratica,labTiempoCuadratico);
-				tp1_LosSherpas.main.LlenadorCubico cubico = new LlenadorCubico(Integer.parseInt(litros),progressBarCubica,labTiempoCubico);
-				tp1_LosSherpas.main.LlenadorExponencial exponencial = new LlenadorExponencial(Integer.parseInt(litros),progressBarExpon,labTiempoExp);
+				tp1_LosSherpas.main.LlenadorLogaritmico log = new LlenadorLogaritmico(Integer.parseInt(litros),progressBarLog,labTiempoLog,labCiclosLog);
+			    tp1_LosSherpas.main.LlenadorLineal linea = new LlenadorLineal(Integer.parseInt(litros),progressBarLin,labTiempoLin,labCiclosLin);
+				tp1_LosSherpas.main.LlenadorNLogaritmico nLogN = new LlenadorNLogaritmico(Integer.parseInt(litros),progressBarNlogN,labTiempoNlogN,labCiclosNlogN);
+				tp1_LosSherpas.main.LlenadorCuadratico cuadratico = new LlenadorCuadratico(Integer.parseInt(litros),progressBarCuadratica,labTiempoCuadratico,labCiclosCuadratico);
+				tp1_LosSherpas.main.LlenadorCubico cubico = new LlenadorCubico(Integer.parseInt(litros),progressBarCubica,labTiempoCubico,labCiclosCubi);
+				tp1_LosSherpas.main.LlenadorExponencial exponencial = new LlenadorExponencial(Integer.parseInt(litros),progressBarExpon,labTiempoExp,labCiclosExp);
 				
 				log.start();
 				linea.start();

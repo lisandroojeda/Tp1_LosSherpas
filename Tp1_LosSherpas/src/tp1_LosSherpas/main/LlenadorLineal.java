@@ -1,21 +1,14 @@
 package tp1_LosSherpas.main;
 
-import java.awt.Color;
 
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
 
-import tp1_LosSherpas.Ventanas.Interfaz;
 
 public class LlenadorLineal extends LlenadorGeneral  {
 		
-		public LlenadorLineal(int vTMuestra,JProgressBar progressBar,JLabel tiempo) {
-			super (vTMuestra,progressBar,tiempo);
+		public LlenadorLineal(int vTMuestra,JProgressBar progressBar,JLabel tiempo,JLabel ciclos) {
+			super (vTMuestra,progressBar,tiempo,ciclos);
 		}
 		 
 		@Override
@@ -23,22 +16,24 @@ public class LlenadorLineal extends LlenadorGeneral  {
 			int count = 1;
 			this.tInicio = System.nanoTime(); //Tomamos la hora en que inicio el algoritmo y la almacenamos en la variable inicio
 			progressbar.setMaximum(this.tamanioMuestra);
-			for(int i=0; i<=this.tamanioMuestra; i++) {
-				count++;
-				super.Tiempo();
+			for(int i=1; i<=this.tamanioMuestra; i++) {
 				progressbar.setValue(i);
+				
 				try {
-					Thread.sleep(10);
+					Thread.sleep(100);
 					} catch (InterruptedException ex) {}
-				progressbar.repaint();
+				
+				
+				ciclos.setText(count+"");
+				ciclos.repaint();
+				
+				
 				this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 				this.tiempo = tFinal - tInicio;
-				tiempoT.setText("Crear cronometro");
+				tiempoT.setText(this.tiempo+"");
 				tiempoT.repaint();
+				progressbar.repaint();
+				count++;
 			}
-			this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-			this.tiempo = tFinal - tInicio;
-			System.out.println("Tiempo de ejecución en milisegundos: p2 Lineal " + tiempo);
-			System.out.println("Cantidad de apariciones p2 Lineal= "+ count);
 		}
 }

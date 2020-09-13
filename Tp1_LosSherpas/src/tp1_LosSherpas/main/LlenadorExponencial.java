@@ -1,37 +1,53 @@
 package tp1_LosSherpas.main;
 
-import javax.swing.JFrame;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 public class LlenadorExponencial extends LlenadorGeneral {
 
-	public LlenadorExponencial(int vTMuestra, JProgressBar bar,JLabel tiempo) {
-		super (vTMuestra,bar,tiempo);
+	public LlenadorExponencial(int vTMuestra, JProgressBar bar,JLabel tiempo,JLabel ciclos) {
+		super (vTMuestra,bar,tiempo,ciclos);
 	}
 
 	@Override
 	public void run() {
-		int count;
+		int valor;
 		this.tInicio = System.nanoTime();
-		count = exponencial(this.tamanioMuestra);
-		this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-		this.tiempo = tFinal - tInicio;
-		System.out.println("Tiempo de ejecución en milisegundos: p6 Exponencial " + tiempo);
-		System.out.println("Cantidad de apariciones p6 Exponencial = "+ count);
-				
+		int tamanio = (int)Math.pow(this.tamanioMuestra, this.tamanioMuestra);
+		JOptionPane.showMessageDialog(null,tamanio, "Error", JOptionPane.INFORMATION_MESSAGE);
+
+		progressbar.setMaximum(tamanio);
+		valor = exponencial(this.tamanioMuestra);
+	
 		
 	}
 	
 	private int  exponencial(int muestra) {
-		int count =0;
+      int resultado;
+      int count=1;
 		if (muestra == 1) {
-			count = 1; //dibujar una linea del vaso
-	        return count;
+			resultado =1;
 		}
 		else {
-			  count = count + exponencial(muestra -1); 
-			  return count;
+			 try {
+	      		 Thread.sleep(100);
+						} catch (InterruptedException ex) {}   
+			 progressbar.setValue(count);
+			 progressbar.repaint();
+			 this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+			 this.tiempo = tFinal - tInicio;
+			 tiempoT.setText(this.tiempo+"");
+			 tiempoT.repaint();
+
+			 count++;	
+			 resultado= exponencial(muestra-1)+exponencial(muestra-1);
+			 ciclos.setText(count+"");
+    		 ciclos.repaint();
+			 // JOptionPane.showMessageDialog(null,count, "Error", JOptionPane.INFORMATION_MESSAGE);
+						
 		}
+	 return resultado;	
 	}
 }

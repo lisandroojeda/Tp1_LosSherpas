@@ -8,31 +8,33 @@ import javax.swing.JProgressBar;
 
 public class LlenadorLogaritmico extends LlenadorGeneral  {
 	
-	public LlenadorLogaritmico(int vTMuestra,JProgressBar bar,JLabel tiempo) {
-		super (vTMuestra,bar,tiempo);
+	public LlenadorLogaritmico(int vTMuestra,JProgressBar bar,JLabel tiempo,JLabel ciclos) {
+		super (vTMuestra,bar,tiempo,ciclos);
 	}
 	
 	@Override
 	public void run() {
 		int count = 1;
 		this.tInicio = System.nanoTime(); //Tomamos la hora en que inicio el algoritmo y la almacenamos en la variable inicio
-		//progressbar.setMaximum(this.tamanioMuestra*this.tamanioMuestra);
 		progressbar.setMaximum(this.tamanioMuestra/2);
 		for (int i= 1; i <= this.tamanioMuestra; i*= 2){
+			count++;
 			progressbar.setValue(i); //como avanza de dos en dos aumento en el progressbar de 2 en dos
+			
 			try {
-				Thread.sleep(10);
+				Thread.sleep(100);
 				} catch (InterruptedException ex) {}
+			
+			
+			ciclos.setText(count+"");
+			ciclos.repaint();
+			
+			
 			this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			this.tiempo = tFinal - tInicio;
-			tiempoT.setText("Crear cronometro");
+			tiempoT.setText(this.tiempo+"");
 			tiempoT.repaint();
-			//count = count *count ;
-			
+			progressbar.repaint();
 		}
-		this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-		this.tiempo = tFinal - tInicio;
-		System.out.println("Tiempo de ejecución en milisegundos: p1 logaritmica " + tiempo);
-		System.out.println("Cantidad de apariciones p1 logaritmica = "+ count);
 	}
 }

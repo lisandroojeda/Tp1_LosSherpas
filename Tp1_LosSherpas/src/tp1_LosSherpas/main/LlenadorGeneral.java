@@ -13,11 +13,13 @@ public abstract class LlenadorGeneral extends Thread {
 	long tiempo;
     JProgressBar progressbar;
     JLabel tiempoT;
+    JLabel ciclos;
 	
-	public LlenadorGeneral(int vTMuestra,JProgressBar bar,JLabel tiempo) {
+	public LlenadorGeneral(int vTMuestra,JProgressBar bar,JLabel tiempo,JLabel ciclos) {
 		this.tamanioMuestra = vTMuestra;
 		this.progressbar = bar;
 		this.tiempoT = tiempo;
+		this.ciclos = ciclos;
 		
 	}
     
@@ -30,17 +32,17 @@ public abstract class LlenadorGeneral extends Thread {
 		 int minutes = (int) ((millis / (1000*60)) % 60);
 		 int seconds = (int) (millis / 1000) % 60 ;
 
-		 System.out.println("Hora actual : " + hours + ":"+ minutes+":"+seconds);
+		// System.out.println("Hora actual : " + hours + ":"+ minutes+":"+seconds);
 	}
 	
 	protected String tiempoS(long tiempo) {
 	//	long millis = System.currentTimeMillis();
 		
-		 int hours   = (int) ((tiempo / (1000*60*60)) % 24);
-		 int minutes = (int) ((tiempo / (1000*60)) % 60);
-		 int seconds = (int) (tiempo / 1000) % 60 ;
-
-		 return  hours + ":"+ minutes+":"+seconds;
+		// int hours   = (int) ((tiempo / (1000*60*60)) % 24);
+		// int minutes = (int) ((tiempo / (1000*60)) % 60);
+		// int seconds = (int) (tiempo / 1000) % 60 ;
+         int hours = (int) (tiempo/1000)%60;
+		 return  hours + "seg";//+ //":"+ minutes+":"+seconds;
 	}
 	
 	
