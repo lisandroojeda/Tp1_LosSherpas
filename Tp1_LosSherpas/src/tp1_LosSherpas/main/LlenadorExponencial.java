@@ -2,7 +2,7 @@ package tp1_LosSherpas.main;
 
 
 import javax.swing.JLabel;
-
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 public class LlenadorExponencial extends LlenadorGeneral {
@@ -17,6 +17,9 @@ public class LlenadorExponencial extends LlenadorGeneral {
 		
 		this.tInicio = System.nanoTime();
 		int tamanio = (int)Math.pow(3, this.tamanioMuestra);
+		//JOptionPane.showMessageDialog(null,tamanio, "Error", JOptionPane.INFORMATION_MESSAGE);
+
+
 		int i=1;
 		progressbar.setMaximum(tamanio);
 		exponencial(i, tamanio);
@@ -29,12 +32,12 @@ public class LlenadorExponencial extends LlenadorGeneral {
     
 		if (i < tamanio ) {
 			 try {
-	      		 Thread.sleep(100);
+	      		 Thread.sleep(50);
 						} catch (InterruptedException ex) {}   
 			
 			 this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			 this.tiempo = tFinal - tInicio;
-			 tiempoT.setText(this.tiempo+"");
+			 tiempoT.setText(nanoAhhmmss(this.tiempo));
 			 tiempoT.repaint();
 			 
     		 i++;
@@ -46,10 +49,11 @@ public class LlenadorExponencial extends LlenadorGeneral {
 			exponencial(i,tamanio);
 			exponencial(i,tamanio);
 			 try {
-	      		 Thread.sleep(1000);
+	      		 Thread.sleep(10000);
 						} catch (InterruptedException ex) {}   
 			
-				
+			 // JOptionPane.showMessageDialog(null,count, "Error", JOptionPane.INFORMATION_MESSAGE);
+						
 		}
     	  
     	  }
