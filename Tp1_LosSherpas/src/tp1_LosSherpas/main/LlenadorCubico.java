@@ -21,28 +21,21 @@ public class LlenadorCubico extends LlenadorGeneral  {
 					  {  
 		            	progressbar.setValue(count);
 		            	progressbar.repaint();
-		            	count++;
-				      	try {
-				      		 Thread.sleep(10);
-									} catch (InterruptedException ex) {}   
-			    	   }
+		            	ciclos.setText(count+"");
+		  			  	ciclos.repaint();
+		            	 try {
+				      		 Thread.sleep(33);
+									} catch (InterruptedException ex) {}  
+					    	this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+			  			  	this.tiempo = tFinal - tInicio;
+			  			    tiempoT.setText(nanoAhhmmss(this.tiempo));
+			  			  	tiempoT.repaint();
+			            	count++;
+			    	   } 
+
 		            count++; 
 				}
 			  count++;
-
-			  //progressbar.setValue(i); 
-
-			  
-			  ciclos.setText(count+"");
-			  ciclos.repaint();
-							
-			  this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-			  this.tiempo = tFinal - tInicio;
-			  tiempoT.setText(this.tiempo+"");
-			  tiempoT.repaint();
-		      //progressbar.repaint();
-			  count++;
-
 		}
 	}
 

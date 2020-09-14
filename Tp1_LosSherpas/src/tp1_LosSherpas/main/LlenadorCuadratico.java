@@ -20,23 +20,22 @@ public class LlenadorCuadratico extends LlenadorGeneral {
 		    		try {
 						Thread.sleep(100);
 						} catch (InterruptedException ex) {}
+		    		this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
+					this.tiempo = tFinal - tInicio;
+
+   				  tiempoT.setText(nanoAhhmmss(this.tiempo));
+				  tiempoT.repaint();
 		    	  progressbar.setValue(count);
 		    	  progressbar.repaint();
 		    	  count++;
-				}
-
-	    	 
+				}	    	 
 	    	 // progressbar.setValue(i);	
 	    		
 	    		      
 			  ciclos.setText(count+"");
 			  ciclos.repaint();
 							
-			  this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
-			  this.tiempo = tFinal - tInicio;
-			  tiempoT.setText(this.tiempo+"");
-			  tiempoT.repaint();
-		     // progressbar.repaint();
+			  
 			  count++;
 		}
 	}

@@ -34,7 +34,8 @@ public class LlenadorNLogaritmico extends LlenadorGeneral  {
 							
 			  this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			  this.tiempo = tFinal - tInicio;
-			  tiempoT.setText(this.tiempo+"");
+			    tiempoT.setText(nanoAhhmmss(this.tiempo));
+			  //  tiempoT.setText(this.tiempo+"");
 			  tiempoT.repaint();
 		      progressbar.repaint();
 				count++;

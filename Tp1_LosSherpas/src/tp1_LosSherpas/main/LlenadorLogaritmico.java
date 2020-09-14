@@ -12,6 +12,7 @@ public class LlenadorLogaritmico extends LlenadorGeneral  {
 		super (vTMuestra,bar,tiempo,ciclos);
 	}
 	
+	
 	@Override
 	public void run() {
 		int count = 1;
@@ -32,7 +33,9 @@ public class LlenadorLogaritmico extends LlenadorGeneral  {
 			
 			this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			this.tiempo = tFinal - tInicio;
-			tiempoT.setText(this.tiempo+"");
+			 
+
+		    tiempoT.setText(nanoAhhmmss(this.tiempo));
 			tiempoT.repaint();
 			progressbar.repaint();
 		}

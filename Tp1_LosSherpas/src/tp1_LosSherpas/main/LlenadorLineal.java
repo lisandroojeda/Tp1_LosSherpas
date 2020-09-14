@@ -20,7 +20,7 @@ public class LlenadorLineal extends LlenadorGeneral  {
 				progressbar.setValue(i);
 				
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 					} catch (InterruptedException ex) {}
 				
 				
@@ -30,7 +30,8 @@ public class LlenadorLineal extends LlenadorGeneral  {
 				
 				this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 				this.tiempo = tFinal - tInicio;
-				tiempoT.setText(this.tiempo+"");
+			//	tiempoT.setText(this.tiempo+"");
+			    tiempoT.setText(nanoAhhmmss(this.tiempo));
 				tiempoT.repaint();
 				progressbar.repaint();
 				count++;

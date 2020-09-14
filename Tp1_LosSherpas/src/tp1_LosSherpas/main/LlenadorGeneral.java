@@ -45,6 +45,16 @@ public abstract class LlenadorGeneral extends Thread {
 		 return  hours + "seg";//+ //":"+ minutes+":"+seconds;
 	}
 	
+	public String nanoAhhmmss(long nano) {
+		   long microseconds = nano / 1000;
+		   long miliseconds = microseconds / 1000;
+		   long seconds = miliseconds / 1000;
+		   long minutes = seconds / 60;
+		   long hours = minutes / 60;
+		  
+		  return hours+":"+minutes+":"+seconds+":"+miliseconds;
+	}
+	
 	
 
 	
