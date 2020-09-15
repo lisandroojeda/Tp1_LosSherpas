@@ -1,6 +1,5 @@
 package tp1_LosSherpas.main;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 

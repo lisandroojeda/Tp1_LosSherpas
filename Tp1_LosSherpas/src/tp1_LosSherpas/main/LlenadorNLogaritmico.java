@@ -17,29 +17,25 @@ public class LlenadorNLogaritmico extends LlenadorGeneral  {
 		int count = 1;
 
 		this.tInicio = System.nanoTime(); //Tomamos la hora en que inicio el algoritmo y la almacenamos en la variable inicio
-		progressbar.setMaximum(this.tamanioMuestra/2*this.tamanioMuestra);
+		progressbar.setMaximum(this.tamanioMuestra);
 		for (int i =1; i <=this.tamanioMuestra; i ++) {
 		      for(int j = 1; j <= this.tamanioMuestra; j *= 2) 
 				{
-		    	  try {
-						Thread.sleep(50);
-						} catch (InterruptedException ex) {}
-		    	  progressbar.setValue(count);
-		    	  progressbar.repaint();
 		    	  count++;	
 				}
-			 
-		     // progressbar.setValue(i);//cont2
+		      try {
+					Thread.sleep(100);
+					} catch (InterruptedException ex) {}
+		      progressbar.setValue(i);//cont2
           
   			  ciclos.setText(count+"");
 			  ciclos.repaint();
 							
 			  this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			  this.tiempo = tFinal - tInicio;
-			    tiempoT.setText(nanoAhhmmss(this.tiempo));
-			  //  tiempoT.setText(this.tiempo+"");
+			  tiempoT.setText(nanoAhhmmss(this.tiempo));
 			  tiempoT.repaint();
-		     // progressbar.repaint();
+		      progressbar.repaint();
 				count++;
 			}
 	}

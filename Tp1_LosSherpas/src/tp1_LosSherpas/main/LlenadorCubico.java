@@ -14,18 +14,15 @@ public class LlenadorCubico extends LlenadorGeneral  {
 	public void run () {
 		int count = 1;
 		this.tInicio = System.nanoTime(); 
-		progressbar.setMaximum(this.tamanioMuestra*this.tamanioMuestra*this.tamanioMuestra);
+		progressbar.setMaximum(this.tamanioMuestra);
 		for (int i= 1; i<=this.tamanioMuestra; i++) { 	
 			for (int j= 1; j<=this.tamanioMuestra; j++) { 
 		            for (int k=1; k<=this.tamanioMuestra; k++) 
 					  {  
-		            	progressbar.setValue(count);
-		            	progressbar.repaint();
+		            	
 		            	ciclos.setText(count+"");
 		  			  	ciclos.repaint();
-		            	 try {
-				      		 Thread.sleep(33);
-									} catch (InterruptedException ex) {}  
+		            	 
 					    	this.tFinal = System.nanoTime(); //Tomamos la hora en que finalizó el algoritmo y la almacenamos en la variable T
 			  			  	this.tiempo = tFinal - tInicio;
 			  			    tiempoT.setText(nanoAhhmmss(this.tiempo));
@@ -35,6 +32,11 @@ public class LlenadorCubico extends LlenadorGeneral  {
 
 		            count++; 
 				}
+			try {
+	      		 Thread.sleep(400);
+						} catch (InterruptedException ex) {}  
+			progressbar.setValue(i);
+        	progressbar.repaint();
 			  count++;
 		}
 	}

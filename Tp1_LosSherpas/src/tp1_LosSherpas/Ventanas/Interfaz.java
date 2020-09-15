@@ -41,6 +41,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.Transparency;
 
 public class  Interfaz extends JFrame {
 
@@ -67,8 +69,9 @@ public class  Interfaz extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-
+	
 	public  Interfaz() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz.class.getResource("/tp1_LosSherpas/Imagenes/ICO.png")));
 		setResizable(false);
 		setForeground(UIManager.getColor("Button.focus"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,6 +93,12 @@ public class  Interfaz extends JFrame {
 		});
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_2 = new JLabel("LITROS   :");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(109, 12, 71, 20);
+		contentPane.add(lblNewLabel_2);
+		
 		txtFieldQlitros = new JTextField();
 		txtFieldQlitros.setFont(new Font("Ink Free", Font.PLAIN, 17));
 		txtFieldQlitros.setToolTipText("Litros");
@@ -99,21 +108,25 @@ public class  Interfaz extends JFrame {
 		contentPane.add(btnNewButton);
 
 		Panel panelLog = new Panel();
+		panelLog.setForeground(new Color(139, 69, 19));
 		panelLog.setBounds(34, 40, 410, 323);
 		contentPane.add(panelLog);
 		panelLog.setLayout(null);
 		
 		Panel panelNLogN = new Panel();
+		panelNLogN.setForeground(new Color(139, 69, 19));
 		panelNLogN.setBounds(470, 40, 410, 323);
 		contentPane.add(panelNLogN);
 		panelNLogN.setLayout(null);
 
 		Panel panelLineal = new Panel();
+		panelLineal.setForeground(new Color(139, 69, 19));
 		panelLineal.setBounds(899,40, 410, 323);
 		contentPane.add(panelLineal);
 		panelLineal.setLayout(null);
 		
 		Panel panelCuadratica = new Panel();
+		panelCuadratica.setForeground(new Color(139, 69, 19));
 		panelCuadratica.setBounds(34, 392, 410, 323);
 		contentPane.add(panelCuadratica);
 		panelCuadratica.setLayout(null);
@@ -165,6 +178,7 @@ public class  Interfaz extends JFrame {
 		panelCuadratica.add(lblNewLabel_1_2);
 		
 		Panel panelCubica = new Panel();
+		panelCubica.setForeground(new Color(139, 69, 19));
 		panelCubica.setBounds(470, 392, 410, 323);
 		contentPane.add(panelCubica);
 		panelCubica.setLayout(null);
@@ -216,6 +230,7 @@ public class  Interfaz extends JFrame {
 		panelCubica.add(lblNewLabel_1_1_2);
 		
 		Panel panelExp = new Panel();
+		panelExp.setForeground(new Color(139, 69, 19));
 		panelExp.setBounds(898, 392, 410, 323);
 		contentPane.add(panelExp);
 		panelExp.setLayout(null);
