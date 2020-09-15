@@ -15,10 +15,6 @@ public class LlenadorExponencial extends LlenadorGeneral {
 		
 		this.tInicio = System.nanoTime();
 		int tamanio = (int)Math.pow(2, this.tamanioMuestra);
-		//JOptionPane.showMessageDialog(null,tamanio, "Error", JOptionPane.INFORMATION_MESSAGE);
-
-
-
 		progressbar.setMaximum(tamanio);
 		tamanio = this.tamanioMuestra;
 		Hanoi(tamanio,1,2,3);
@@ -39,7 +35,7 @@ public class LlenadorExponencial extends LlenadorGeneral {
 			  	this.tiempo = tFinal - tInicio;
 			    tiempoT.setText(nanoAhhmmss(this.tiempo));
 			  	tiempoT.repaint(); 
-			 ciclos.setText(contador+"");
+			 ciclos.setText(contador*10+"");
 			 ciclos.repaint();
 			 contador++;
 		     Hanoi(n-1, origen, destino, auxiliar);
